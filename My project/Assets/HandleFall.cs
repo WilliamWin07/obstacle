@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class HandleFall : MonoBehaviour
 {
-    MeshRenderer renderer;
-    Rigidbody rigidbody;
-    [SerializeField] float timeToWait = 5f;
+    MeshRenderer mr;
+    Rigidbody rb;
 
+    [SerializeField] float timeTowait = 5f;
+
+    // Start is called before the first frame update
     void Start()
     {
-        renderer = GetComponent<MeshRenderer>();
-        rigidbody = GetComponent<Rigidbody>();
+        mr = GetComponent<MeshRenderer>();
+        rb = GetComponent<Rigidbody>();
 
-        renderer.enabled = false;
-        rigidbody.useGravity = false;
+        mr.enabled = false;
+        rb.useGravity= false;
     }
 
-    void Update() 
+    // Update is called once per frame
+    void Update()
     {
-        if (Time.time > timeToWait) 
+        if (Time.time > timeTowait)
         {
-            renderer.enabled = true;
-            rigidbody.useGravity = true;
+            mr.enabled = true;
+            rb.useGravity = true;
         }
+        Debug.Log(Time.time);
     }
-
 }
